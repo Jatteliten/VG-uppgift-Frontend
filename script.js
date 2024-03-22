@@ -302,8 +302,9 @@ async function createCustomerForm(){
       cityInput.classList.add("red-placeholder");
     }
 
-    if(localStorage.getItem('cart') === "[]") {
+    if(localStorage.getItem('cart') === "[]" || localStorage.getItem('cart') === null) {
       isValid = false;
+      alert("Cart is empty");
     }
   
     if(isValid){
