@@ -129,12 +129,14 @@ function createEmptyCartButton(){
 }
 
 async function createTotalPriceDisplay(){
-  const priceTotalDisplay = document.createElement('p');
-  priceTotalDisplay.classList.add('totalPriceDisplayInCart');
+  if(loadCartFromStorage().length !== 0){
+    const priceTotalDisplay = document.createElement('p');
+    priceTotalDisplay.classList.add('totalPriceDisplayInCart');
 
-  itemInformation.appendChild(priceTotalDisplay);
+    itemInformation.appendChild(priceTotalDisplay);
 
-  updateTotalPriceDisplay(priceTotalDisplay);
+    updateTotalPriceDisplay(priceTotalDisplay);
+  }
 }
 
 async function updateTotalPriceDisplay() {
