@@ -1,0 +1,130 @@
+#topHeaderWithRecs {
+    text-align: center;
+    font-size: x-small;
+    background-color: #ced4da;
+
+}
+
+#headLogoTopOfWebpage {
+    text-align: center;
+    font-size: 3em;
+    font-variant-caps: all-small-caps;
+}
+
+.navbar-cart{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 40px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.item-count {
+  display: inline-block;
+  color: white;
+  width: 20px; 
+  text-align: center;
+}
+
+.centered-footer-text{
+  text-align: center;
+}
+
+.about-us-div{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.about-us{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.about-us-text{
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.custom-card {
+  width: 100%;
+  height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-img-top {
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+img.icon{
+    width: 20px; height: auto
+} 
+
+.socialMediaLink {
+    text-decoration: none;
+}
+
+.red-placeholder::placeholder {
+  color: red !important;
+}
+
+.removeItemIcon{
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.itemInformationRow{
+  padding: 10px;
+}
+
+.itemInformationRowImg{
+  height: 80px;
+  width: 80px;
+  margin-right: 20px;
+}
+
+.controls-container{
+  display: inline-flex;
+  align-items: center;
+}
+
+.controls-container p {
+  margin: 10px;
+  padding: 3px;
+  background: white;
+}
+
+.removeAllButton{
+  margin-top: 20px;
+}
+
+.totalPriceDisplayInCart{
+  padding-top: 20px;
+}
+
+#confirmationMessage{
+  padding:20px;
+}
+
+
+.totalPrice{
+  padding-top: 50px;
+}
+
+#receipt{
+  padding-top: 30px;
+}
+
+.receiptDiv{
+  padding-left: 25px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}

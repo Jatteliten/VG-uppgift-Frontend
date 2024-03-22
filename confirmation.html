@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="bootstrap.css">
+        <title>Webshop</title>
+    </head>
+    <body class="container" onload="createConfirmationMessage(); createReceipt();">
+
+        <header id="topHeaderWithRecs">Fri frakt över 300 kr - Vårrea på utvalda artiklar - Fria returer inom 30 dagar</header>
+
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Asmada</a>
+                <div class="navbar-collapse collapse show" id="navbarColor01">
+                    <ul class="navbar-nav mx-auto justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about-us.html">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <a class="navbar-cart" href="cart.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                        </svg>
+                        <p class="item-count">0</p>
+                      </a>
+                      
+                </div>
+            </div>
+        </nav>
+
+        <h2 id="confirmationMessage"></h2>
+        <div class="receiptDiv">
+            <h4 id="receiptTitle" class="text-muted">Receipt</h4>
+            <h5 id="receipt" class="text-muted"></h5>
+        </div>
+
+        <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+            <section class="d-flex justify-content-center justify-content-lg-between p-2 border-bottom">
+                <div class="me-5 d-none d-lg-block">
+                    <span>Get connected with us on social networks:</span>
+                </div>
+          
+                <div>
+                <a href="fakesocialmedia.html" class="socialMediaLink" target="_blank">
+                    <img
+                        class="icon"
+                        src="images/logos/Facebook_Logo_Primary.png"
+                        alt="Facebook"/>
+                </a>
+                <a href="fakesocialmedia.html" class="socialMediaLink" target="_blank">
+                    <img
+                        class="icon"
+                        src="images/logos/Instagram_Glyph_Gradient.png"
+                        alt="Instagram"/>
+                </a>
+                <a href="fakesocialmedia.html" class="socialMediaLink" target="_blank">
+                    <img 
+                        class="icon" 
+                        src="images/logos/yt_logo_rgb_light.png" 
+                        alt="Youtube" />
+                </a>
+                <br />
+                </div>
+            </section>
+          
+            <section>
+                <div class="container text-center text-md-start mt-2">
+                  <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                      <h6 class="centered-footer-text">
+                        <i class="centered-footer-text"></i>ASMADA Webshop
+                      </h6>
+                      <p class="centered-footer-text">
+                        This webshop was created by Astrid, Martin and Daniel for our
+                        course in Frontend
+                      </p>
+                    </div>
+                       
+                </div>
+              </section>
+               
+            <div
+              class="text-center p-2"
+              style="background-color: rgba(0, 0, 0, 0.05)"
+            >
+                © 2024 Copyright
+            </div>
+          </footer>
+    
+    </body>
+
+    <script src="script.js"></script>
+</html>
