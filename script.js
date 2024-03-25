@@ -22,7 +22,7 @@ async function fetchAndDisplayProductCards() {
   const cardRow = document.getElementById('cardRow');
   const resp = await fetch('https://fakestoreapi.com/products');
   const products = await resp.json();
-  
+
   products.forEach(product => {
     createCard(product);
   });
@@ -36,7 +36,7 @@ function loadCartFromStorage() {
   return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
-window.addEventListener('beforeunload', function() {
+window.addEventListener('beforeunload', function () {
   const cart = loadCartFromStorage();
   saveCartToStorage(cart);
 });
@@ -49,10 +49,10 @@ function updateCartItemCount() {
   }
 }
 
-async function createCard(product){
+async function createCard(product) {
   try {
     const cardColumn = document.createElement('div');
-    cardColumn.classList.add('col-12', 'col-sm-6', 'col-md-5','col-lg-4', 'col-xl-3', 'mb-2');
+    cardColumn.classList.add('col-12', 'col-sm-6', 'col-md-5', 'col-lg-4', 'col-xl-3', 'mb-2');
 
     const card = document.createElement('div');
     card.classList.add('card', 'custom-card');
@@ -74,7 +74,7 @@ async function createCard(product){
     cardBody.appendChild(price);
 
     const addToCartButton = createNewElementWithText('button', 'Add to cart');
-    addToCartButton.addEventListener('click', function(){
+    addToCartButton.addEventListener('click', function () {
       const cart = loadCartFromStorage();
       cart.push(product.id);
       saveCartToStorage(cart);
@@ -91,19 +91,19 @@ async function createCard(product){
   }
 }
 
-function createNewElementWithText(elementType, text){
+function createNewElementWithText(elementType, text) {
   const element = document.createElement(elementType);
   element.textContent = text;
   return element;
 }
 
-async function displayItemsInCart(){
+async function displayItemsInCart() {
   const itemInformation = document.getElementById('itemInformation')
   const set = new Set(JSON.parse(localStorage.getItem('cart')) || [])
 
   const promises = [];
 
-  set.forEach(item =>{
+  set.forEach(item => {
     promises.push(createItemInCart(item));
   });
 
@@ -113,12 +113,12 @@ async function displayItemsInCart(){
   createTotalPriceDisplay();
 }
 
-function createEmptyCartButton(){
-  if(loadCartFromStorage().length !== 0){
+function createEmptyCartButton() {
+  if (loadCartFromStorage().length !== 0) {
     const removeAll = document.createElement('button');
     removeAll.classList.add('removeAllButton');
     removeAll.textContent = "Empty cart"
-    removeAll.addEventListener('click', function(){
+    removeAll.addEventListener('click', function () {
       localStorage.clear();
       updateCartItemCount();
       itemInformation.innerHTML = "";
@@ -128,8 +128,8 @@ function createEmptyCartButton(){
   }
 }
 
-async function createTotalPriceDisplay(){
-  if(loadCartFromStorage().length !== 0){
+async function createTotalPriceDisplay() {
+  if (loadCartFromStorage().length !== 0) {
     const priceTotalDisplay = document.createElement('p');
     priceTotalDisplay.classList.add('totalPriceDisplayInCart');
 
@@ -173,7 +173,7 @@ async function createItemInCart(item) {
 
   const controlsContainer = document.createElement('div');
   controlsContainer.classList.add('controls-container');
-  
+
   const counter = document.createElement('p');
   let cart = loadCartFromStorage();
   counter.textContent = cart.filter(i => i === product.id).length;
@@ -182,20 +182,20 @@ async function createItemInCart(item) {
   const removeItem = document.createElement('p');
   removeItem.classList.add('removeItemIcon');
   removeItem.textContent = "X";
-  removeItem.addEventListener('click', function() {
-      let cart = loadCartFromStorage();
-      cart = cart.filter(p => p !== product.id);
-      saveCartToStorage(cart);
-      updateCartItemCount();
-      updateTotalPriceDisplay();
-      removeItemsIfCartIsEmpty(cart);
-      itemInfo.remove();
+  removeItem.addEventListener('click', function () {
+    let cart = loadCartFromStorage();
+    cart = cart.filter(p => p !== product.id);
+    saveCartToStorage(cart);
+    updateCartItemCount();
+    updateTotalPriceDisplay();
+    removeItemsIfCartIsEmpty(cart);
+    itemInfo.remove();
   });
   controlsContainer.appendChild(removeItem);
 
   const minusButton = document.createElement('button');
   minusButton.textContent = "-";
-  minusButton.addEventListener('click', function() {
+  minusButton.addEventListener('click', function () {
     let cart = loadCartFromStorage();
     const indexToRemove = cart.indexOf(product.id);
     if (indexToRemove !== -1) {
@@ -204,7 +204,7 @@ async function createItemInCart(item) {
       updateCartItemCount();
       updateTotalItemPrice(cart, product, totalPrice);
       counter.textContent = cart.filter(i => i === product.id).length;
-      if(cart.indexOf(product.id) == -1){
+      if (cart.indexOf(product.id) == -1) {
         itemInfo.remove();
       }
       removeItemsIfCartIsEmpty(cart);
@@ -215,7 +215,7 @@ async function createItemInCart(item) {
 
   const plusButton = document.createElement('button');
   plusButton.textContent = "+";
-  plusButton.addEventListener('click', function(){
+  plusButton.addEventListener('click', function () {
     let cart = loadCartFromStorage();
     cart.push(product.id);
     saveCartToStorage(cart);
@@ -235,46 +235,46 @@ async function createItemInCart(item) {
   itemInformation.appendChild(itemInfo);
 }
 
-function removeItemsIfCartIsEmpty(cart){
-  if(cart.length == 0){
+function removeItemsIfCartIsEmpty(cart) {
+  if (cart.length == 0) {
     itemInformation.innerHTML = "";
   }
 }
 
-async function updateTotalItemPrice(cart, product, totalPrice){
+async function updateTotalItemPrice(cart, product, totalPrice) {
   const amount = cart.filter(i => i === product.id).length;
   totalPrice.textContent = (Number(amount) * Number(product.price)).toFixed(2) + "€";
 }
 
-async function createCustomerForm(){
-  document.getElementById("myForm").addEventListener("submit", function(event) {
+async function createCustomerForm() {
+  document.getElementById("myForm").addEventListener("submit", function (event) {
     event.preventDefault();
-  
+
     let isValid = true;
-  
+
     const nameInput = document.getElementById("name");
     const phoneNumberInput = document.getElementById("phone-number");
     const emailInput = document.getElementById("exampleInputEmail1");
     const streetNameInput = document.getElementById("streetName");
     const zipCodeInput = document.getElementById("zipCode");
     const cityInput = document.getElementById("city");
-    
+
     const fullNamePattern = /^(?=.{2,50}$)(?:[a-zA-Z]+(?:\s[a-zA-Z]+){1,})$/;
     if (!fullNamePattern.test(nameInput.value.trim())) {
       isValid = false;
       nameInput.value = "";
       nameInput.placeholder = "Please enter first and last name";
       nameInput.classList.add("red-placeholder");
-    } 
-  
+    }
+
     const phonePattern = /^[\d()-]{0,50}$/;
     if (!phonePattern.test(phoneNumberInput.value.trim()) || phoneNumberInput.value.trim().length == 0) {
       isValid = false;
       phoneNumberInput.value = "";
       phoneNumberInput.placeholder = "Please enter correct phone number";
       phoneNumberInput.classList.add("red-placeholder");
-    } 
-    
+    }
+
     const emailPattern = /^[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/;
     if (!emailPattern.test(emailInput.value.trim())) {
       isValid = false;
@@ -282,7 +282,7 @@ async function createCustomerForm(){
       emailInput.placeholder = "Please enter correct Email";
       emailInput.classList.add("red-placeholder");
     }
-  
+
     if (streetNameInput.value.trim().length < 2 || streetNameInput.value.trim().length > 50) {
       isValid = false;
       streetNameInput.value = "";
@@ -296,7 +296,7 @@ async function createCustomerForm(){
       zipCodeInput.placeholder = "Please enter a valid zipcode (5 digits)";
       zipCodeInput.classList.add("red-placeholder");
     }
-  
+
     if (cityInput.value.trim().length < 2 || cityInput.value.trim().length > 50) {
       isValid = false;
       cityInput.value = "";
@@ -304,20 +304,20 @@ async function createCustomerForm(){
       cityInput.classList.add("red-placeholder");
     }
 
-    if(localStorage.getItem('cart') === "[]" || localStorage.getItem('cart') === null) {
+    if (localStorage.getItem('cart') === "[]" || localStorage.getItem('cart') === null) {
       isValid = false;
       alert("Cart is empty");
     }
-  
-    if(isValid){
+
+    if (isValid) {
       localStorage.customerName = nameInput.value;
       window.location.href = "confirmation.html";
     }
-    
+
   });
 }
 
-async function createConfirmationMessage(){
+async function createConfirmationMessage() {
   const confirmationMessage = document.getElementById('confirmationMessage');
   confirmationMessage.textContent = "Thank you for your order " + localStorage.customerName + "!";
 }
@@ -341,7 +341,7 @@ async function createReceipt() {
   updateCartItemCount();
 }
 
-async function createReceiptInformation(product){
+async function createReceiptInformation(product) {
   let resp = await fetch('https://fakestoreapi.com/products/' + product);
   let json = await resp.json();
   let counter = loadCartFromStorage().filter(i => i === json.id).length;
